@@ -1,0 +1,23 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<button (click)="simpleGet()">GET</button>
+<button (click)="getPerson()">GET ARRAY</button>
+<button (click)="personPost()">POST</button>
+
+<div>
+GET response:
+<span *ngIf="person" >{{person.name}} {{person.age}}</span>
+</div>
+<div *ngIf="people">
+ get array response:
+<span  *ngFor="let perosn of people">{{person.name}} {{person.age}}</span>
+</div>
+
+
+
+
+<router-outlet></router-outlet>
