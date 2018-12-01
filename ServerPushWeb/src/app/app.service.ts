@@ -18,6 +18,6 @@ export class AppService {
   }
 
   postPerson(person :Person){
-    this.httpClient.post<Person>(`localhost:8080/api/getPeople`, person)
+    this.httpClient.post<Person>(`localhost:8080/api/postPerson`, person)
   }
 }
