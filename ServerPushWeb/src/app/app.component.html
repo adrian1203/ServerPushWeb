@@ -6,7 +6,7 @@
 </div>
 <button (click)="simpleGet()">GET</button>
 <button (click)="getPerson()">GET ARRAY</button>
-<button (click)="personPost()">POST</button>
+<button (click)="postPerson()">POST</button>
 
 <div>
 GET response:
@@ -15,6 +15,18 @@ GET response:
 <div *ngIf="people">
  get array response:
 <span  *ngFor="let perosn of people">{{person.name}} {{person.age}}</span>
+</div>
+
+<div>
+  Messages
+
+  <div *ngFor="let msg of messages">
+   Reciver Id: {{msg.receiverId}} <br>
+    Sender Id:{{msg.senderId}}<br>
+   Sender Name: {{msg.senderName}}<br>
+    Message: {{msg.message}}<br>
+  </div>
+  <br>
 </div>
 
 
