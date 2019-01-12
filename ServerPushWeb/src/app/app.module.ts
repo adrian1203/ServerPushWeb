@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import {myStompConfig} from './my-stomp.config';
 import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '@stomp/ng2-stompjs';
+import { FormsModule } from '@angular/forms';
+import { AlertModule } from 'ngx-bootstrap';
+
+
 
 
 @NgModule({
@@ -16,6 +20,8 @@ import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    AlertModule.forRoot()
   ],
   providers: [
     {

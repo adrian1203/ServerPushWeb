@@ -4,32 +4,46 @@
     Welcome to {{ title }}!
   </h1>
 </div>
-<button (click)="simpleGet()">GET HSTORY </button>
-<button (click)="getTest()">TEST</button>
-<button (click)="post()">POST</button>
-
 <div>
-GET response:
-<span *ngIf="person" >{{person.name}} {{person.age}}</span>
-</div>
-<div *ngIf="people">
- get array response:
-<span  *ngFor="let perosn of people">{{person.name}} {{person.age}}</span>
-</div>
-
-<div>
-  Messages
-
-  <div *ngFor="let msg of messages">
-   Reciver Id: {{msg.receiverId}} <br>
-    Sender Id:{{msg.senderId}}<br>
-   Sender Name: {{msg.senderName}}<br>
-    Message: {{msg.message}}<br>
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="create()" #editForm="ngForm">
+      <h2>
+        Napisz wiadomość
+      </h2>
+      <div>
+        <div class="form-group">
+          <label>Nadawaca</label>
+          <input type="text" class="form-control" name="sender"
+                 [(ngModel)]="simpleMessage.sender" maxlength="50" required>
+        </div>
+        <div class="form-group">
+          <label>Odbiorca</label>
+          <input type="text" class="form-control" name="receiver"
+                 [(ngModel)]="simpleMessage.receiver" maxlength="50" required>
+        </div>
+        <div class="form-group">
+          <label>Treść wiadomości</label>
+          <input type="text" class="form-control" name="text"
+                 [(ngModel)]="simpleMessage.text" maxlength="500" required>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">
+            &nbsp;<span>Save</span>
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
-  <br>
 </div>
+Messages
 
-
+<div *ngFor="let msg of messages">
+  Reciver Id: {{msg.receiverId}} <br>
+  Sender Id:{{msg.senderId}}<br>
+  Sender Name: {{msg.senderName}}<br>
+  Message: {{msg.message}}<br>
+</div>
+<br>
 
 
 <router-outlet></router-outlet>

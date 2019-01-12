@@ -1,10 +1,3 @@
-export class Person {
-  constructor(
-    public name?: string,
-    public age?: number
-  ) {
-  }
-}
 
 export class MyMessage {
   constructor(
@@ -12,6 +5,15 @@ export class MyMessage {
     public receiverId?: string,
     public senderId?: string,
     public senderName?: string,
+  ) {
+  }
+}
+
+export class SimpleMessage {
+  constructor(
+    public sender?: string,
+    public receiver?: string,
+    public  text?: string,
   ) {
   }
 }
