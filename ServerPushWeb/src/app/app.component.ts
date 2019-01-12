@@ -33,9 +33,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.messages = new Array<MyMessage>();
-    // this.rxStompService.watch('/history/text').subscribe((message: Message) => {
-    //   this.receivedMessages.push(message.body);
-    // });
   }
 
   initializeWebSocketConnection() {
@@ -48,11 +45,8 @@ export class AppComponent implements OnInit {
         if (message.body) {
           console.log(message.body);
 
-         // this.message = JSON.parse(message.body);
           this.messages.push(JSON.parse(message.body)[0]);
           console.log(this.messages);
-          // $('.chat').append('<div class=\'message\'>' + message.body + '</div>');
-          // console.log(message.body);
         }
       });
     });
@@ -65,18 +59,18 @@ export class AppComponent implements OnInit {
     });
   }
 
-  //
-  // getPerson() {
-  //   this.people = new Array<Person>();
-  //   this.appService.getPeople().subscribe((res => {
-  //     this.people = res;
-  //   }));
-  //
-  // }
-  //
-  postPerson() {
+
+  getTest() {
+    this.people = new Array<Person>();
+    this.appService.getTest().subscribe((res => {
+      console.log(res);
+    }));
+
+  }
+
+  post() {
     let personPost = new Person('Name', 13);
-    this.appService.postPerson(personPost);
+    this.appService.post(personPost);
   }
 
   getHistroy() {

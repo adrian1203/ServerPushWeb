@@ -16,11 +16,11 @@ export class AppService {
     return this.httpClient.get<any>(`http://localhost:8080/history/text`);
   }
 
-  getPeople(): Observable<Person[]> {
-    return this.httpClient.get<Person[]>(`localhost:8080/api/getPeople`);
+  getTest(): Observable<string> {
+    return this.httpClient.get<string>(`http://localhost:8080/api/test`);
   }
 
-  postPerson(person: Person) {
+  post(person: Person) {
     console.log('dupa');
     this.httpClient.post<Person>(`http://localhost:8080/send/text`, person,{ observe: 'response' }).subscribe((res)=>{
       console.log(res);
