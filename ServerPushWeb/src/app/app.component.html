@@ -26,9 +26,9 @@
                   [(ngModel)]="simpleMessage.text" maxlength="500" required>
         </textarea>
       </div>
-      <div>
-        <button type="submit" class="btn btn-info">
-          &nbsp;<span>Wyślij</span>
+      <div class="row center-block">
+        <button type="submit" class="btn btn-info center-block ">
+          &nbsp;<span>Wyślij wiadomość</span>
         </button>
       </div>
     </div>
@@ -40,7 +40,7 @@
   <h2>
     Wiadomości
   </h2>
-  <div *ngFor="let msg of simpleMessages" class="bg-primary" style="margin: 10px;">
+  <div *ngFor="let msg of simpleMessages" class="bg-primary rounded" style="margin: 10px;">
     <span><b>Nadawca </b>{{msg.sender}}</span><br>
     <span><b>Odbiorca </b> {{msg.receiver}}</span><br>
     <span><b>Treść </b> {{msg.text}}</span><br>
