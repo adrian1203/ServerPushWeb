@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   title = 'ServerPushWeb';
   messages: MyMessage [];
   simpleMessage: SimpleMessage;
+  simpleMessages: SimpleMessage[];
   text: string;
   private stompClient;
   private serverUrl = 'http://localhost:8080/server-push';
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.messages = new Array<MyMessage>();
     this.simpleMessage = new SimpleMessage();
+    this.readTemplate();
   }
 
   create() {
@@ -58,6 +60,14 @@ export class AppComponent implements OnInit {
   //     });
   //   });
   // }
+
+  readTemplate() {
+    this.simpleMessages = new Array<SimpleMessage>();
+    this.simpleMessages.push(new SimpleMessage('ja', 'ty', 'wiadomosc 1'));
+    this.simpleMessages.push(new SimpleMessage('ja', 'on', 'wiadomosc 2'));
+
+
+  }
 
 
 }

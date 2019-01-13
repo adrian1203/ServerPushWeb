@@ -1,49 +1,63 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    Server Push Streaming
   </h1>
 </div>
-<div>
-  <div class="col-8">
-    <form name="editForm" role="form" novalidate (ngSubmit)="create()" #editForm="ngForm">
-      <h2>
-        Napisz wiadomość
-      </h2>
-      <div>
-        <div class="form-group">
-          <label>Nadawaca</label>
-          <input type="text" class="form-control" name="sender"
-                 [(ngModel)]="simpleMessage.sender" maxlength="50" required>
-        </div>
-        <div class="form-group">
-          <label>Odbiorca</label>
-          <input type="text" class="form-control" name="receiver"
-                 [(ngModel)]="simpleMessage.receiver" maxlength="50" required>
-        </div>
-        <div class="form-group">
-          <label>Treść wiadomości</label>
-          <input type="text" class="form-control" name="text"
-                 [(ngModel)]="simpleMessage.text" maxlength="500" required>
-        </div>
-        <div>
-          <button type="submit" class="btn btn-primary">
-            &nbsp;<span>Save</span>
-          </button>
-        </div>
+<div class="col-md-4 border border-primary rounded bg-primary" style="margin: 10px">
+  <form name="editForm" role="form" novalidate (ngSubmit)="create()" #editForm="ngForm">
+    <h2>
+      Napisz wiadomość
+    </h2>
+    <div>
+      <div class="form-group">
+        <label class="form-control-label">Nadawca</label>
+        <input type="text" class="form-control" name="sender"
+               [(ngModel)]="simpleMessage.sender" maxlength="20" required>
       </div>
-    </form>
+      <div class="form-group">
+        <label>Odbiorca</label>
+        <input type="text" class="form-control" name="receiver"
+               [(ngModel)]="simpleMessage.receiver" maxlength="20" required>
+      </div>
+      <div class="form-group">
+        <label>Treść wiadomości</label>
+        <textarea type="" class="form-control" name="text"
+                  [(ngModel)]="simpleMessage.text" maxlength="500" required>
+        </textarea>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-info">
+          &nbsp;<span>Wyślij</span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="bg-info col-md-4" style="text-align: center">
+  <h2>
+    Wiadomości
+  </h2>
+  <div *ngFor="let msg of simpleMessages" class="bg-primary" style="margin: 10px;">
+    <span><b>Nadawca </b>{{msg.sender}}</span><br>
+    <span><b>Odbiorca </b> {{msg.receiver}}</span><br>
+    <span><b>Treść </b> {{msg.text}}</span><br>
   </div>
 </div>
-Messages
-
-<div *ngFor="let msg of messages">
-  Reciver Id: {{msg.receiverId}} <br>
-  Sender Id:{{msg.senderId}}<br>
-  Sender Name: {{msg.senderName}}<br>
-  Message: {{msg.message}}<br>
-</div>
 <br>
+
+<div>
+  Messages
+
+  <div *ngFor="let msg of messages">
+    Reciver Id: {{msg.receiverId}} <br>
+    Sender Id:{{msg.senderId}}<br>
+    Sender Name: {{msg.senderName}}<br>
+    Message: {{msg.message}}<br>
+  </div>
+</div>
 
 
 <router-outlet></router-outlet>
