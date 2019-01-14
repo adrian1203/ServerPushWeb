@@ -23,6 +23,6 @@ export class AppService {
   }
 
   createMessage(message: SimpleMessage): Observable<HttpResponse<SimpleMessage>> {
-    return this.httpClient.post<SimpleMessage>(this.resourceUrl + `/create`, message, { observe: 'response' });
+    return this.httpClient.post<SimpleMessage>(this.resourceUrl + `/create/simple-message`, message, { observe: 'response' });
   }
 }

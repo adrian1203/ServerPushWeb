@@ -14,6 +14,7 @@ export class SimpleMessage {
     public sender?: string,
     public receiver?: string,
     public  text?: string,
+    public  date?: Date
   ) {
   }
 }

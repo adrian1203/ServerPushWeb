@@ -28,16 +28,20 @@ export class AppComponent implements OnInit {
   constructor(public appService: AppService) {
     //this.initializeWebSocketConnection();
 
+    this.initializeSimpleMessageStreaming();
+
   }
 
   ngOnInit() {
     this.messages = new Array<MyMessage>();
+    this.simpleMessages = new Array<SimpleMessage>();
     this.simpleMessage = new SimpleMessage();
     this.readTemplate();
   }
 
   create() {
     console.log('Create SimpleMessage...');
+    this.simpleMessage.date = new Date();
     this.appService.createMessage(this.simpleMessage).subscribe((res) => {
       console.log(res);
       this.simpleMessage.text = '';
@@ -61,10 +65,27 @@ export class AppComponent implements OnInit {
   //   });
   // }
 
+  initializeSimpleMessageStreaming() {
+    let webSocket = new SockJS(this.serverUrl);
+    this.stompClient = Stomp.over(webSocket);
+    let that = this;
+    this.stompClient.connect({}, () => {
+      that.stompClient.subscribe('/streaming/topic/simple-message', (message) => {
+        console.log(message);
+        if (message.body) {
+          console.log(message.body);
+
+          this.simpleMessages.push(JSON.parse(message.body)[0]);
+          console.log(this.messages);
+        }
+      });
+    });
+  }
+
   readTemplate() {
     this.simpleMessages = new Array<SimpleMessage>();
-    this.simpleMessages.push(new SimpleMessage('ja', 'ty', 'wiadomosc 1'));
-    this.simpleMessages.push(new SimpleMessage('ja', 'on', 'wiadomosc 2'));
+    this.simpleMessages.push(new SimpleMessage('ja', 'ty', 'wiadomosc 1', new Date()));
+    this.simpleMessages.push(new SimpleMessage('ja', 'on', 'wiadomosc 2', new Date()));
 
 
   }
