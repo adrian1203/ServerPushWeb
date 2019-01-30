@@ -38,7 +38,7 @@
 <div class="bg-info col-md-4" style=" text-align: center; ">
   <h2>Wiadomości</h2>
 <div class="bg-info"
-     style=" text-align: center; overflow: scroll; height: 600px;" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+     style=" text-align: center;  overflow-y: scroll; height:auto; max-height:85vh;" #scrollMe [scrollTop]="scrollMe.scrollHeight">
 
   <div *ngFor="let msg of simpleMessages" class="bg-primary rounded" style="margin: 10px;"
        >
