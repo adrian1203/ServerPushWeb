@@ -10,19 +10,16 @@ export class AppService {
 
   constructor(public httpClient: HttpClient) {
   }
-  private resourceUrl = `http://localhost:8080/api`
+
+  private resourceUrl = `http://localhost:8080/api`;
 
 
-
-  simpleGet(): Observable<any> {
-    return this.httpClient.get<any>(`http://localhost:8080/history/text`);
+  getSimpleMessageGet(): Observable<SimpleMessage[]> {
+    return this.httpClient.get<any>(this.resourceUrl + `/simple-message`);
   }
 
-  getTest(): Observable<string> {
-    return this.httpClient.get<string>(`http://localhost:8080/api/test`);
-  }
 
   createMessage(message: SimpleMessage): Observable<HttpResponse<SimpleMessage>> {
-    return this.httpClient.post<SimpleMessage>(this.resourceUrl + `/create/simple-message`, message, { observe: 'response' });
+    return this.httpClient.post<SimpleMessage>(this.resourceUrl + `/create/simple-message`, message, {observe: 'response'});
   }
 }

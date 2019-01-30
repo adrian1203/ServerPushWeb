@@ -26,8 +26,7 @@ export class AppComponent implements OnInit {
 
 
   constructor(public appService: AppService) {
-    //this.initializeWebSocketConnection();
-
+    this.readHistory();
     this.initializeSimpleMessageStreaming();
 
   }
@@ -36,7 +35,6 @@ export class AppComponent implements OnInit {
     this.messages = new Array<MyMessage>();
     this.simpleMessages = new Array<SimpleMessage>();
     this.simpleMessage = new SimpleMessage();
-   // this.readTemplate();
   }
 
   create() {
@@ -47,47 +45,24 @@ export class AppComponent implements OnInit {
       this.simpleMessage.text = '';
     });
   }
-
-  // initializeWebSocketConnection() {
-  //   let webSocket = new SockJS(this.serverUrl);
-  //   this.stompClient = Stomp.over(webSocket);
-  //   let that = this;
-  //   this.stompClient.connect({}, () => {
-  //     that.stompClient.subscribe('/topic/messages', (message) => {
-  //       console.log(message);
-  //       if (message.body) {
-  //         console.log(message.body);
-  //
-  //         this.messages.push(JSON.parse(message.body)[0]);
-  //         console.log(this.messages);
-  //       }
-  //     });
-  //   });
-  // }
-
   initializeSimpleMessageStreaming() {
     let webSocket = new SockJS(this.serverUrl);
     this.stompClient = Stomp.over(webSocket);
     let that = this;
     this.stompClient.connect({}, () => {
       that.stompClient.subscribe('/topic/simple-message', (message) => {
-        console.log('TTTUTAJJJJJJJJJJJ')
-        console.log(message);
         if (message.body) {
-          console.log(message.body);
-          console.log(JSON.parse(message.body));
-
           this.simpleMessages.push(JSON.parse(message.body));
-          console.log(this.simpleMessages);
         }
       });
     });
   }
 
-  readTemplate() {
-    this.simpleMessages = new Array<SimpleMessage>();
-    this.simpleMessages.push(new SimpleMessage('ja', 'ty', 'wiadomosc 1', new Date()));
-    this.simpleMessages.push(new SimpleMessage('ja', 'on', 'wiadomosc 2', new Date()));
+  readHistory() {
+    this.appService.getSimpleMessageGet().subscribe((res) => {
+      this.simpleMessages = new Array<SimpleMessage>();
+      this.simpleMessages = res;
+    });
 
 
   }
