@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
     this.messages = new Array<MyMessage>();
     this.simpleMessages = new Array<SimpleMessage>();
     this.simpleMessage = new SimpleMessage();
-    this.readTemplate();
+   // this.readTemplate();
   }
 
   create() {
@@ -71,12 +71,14 @@ export class AppComponent implements OnInit {
     let that = this;
     this.stompClient.connect({}, () => {
       that.stompClient.subscribe('/topic/simple-message', (message) => {
+        console.log('TTTUTAJJJJJJJJJJJ')
         console.log(message);
         if (message.body) {
           console.log(message.body);
+          console.log(JSON.parse(message.body));
 
-          this.simpleMessages.push(JSON.parse(message.body)[0]);
-          console.log(this.messages);
+          this.simpleMessages.push(JSON.parse(message.body));
+          console.log(this.simpleMessages);
         }
       });
     });
