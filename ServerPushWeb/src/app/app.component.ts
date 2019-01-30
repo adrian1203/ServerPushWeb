@@ -70,7 +70,7 @@ export class AppComponent implements OnInit {
     this.stompClient = Stomp.over(webSocket);
     let that = this;
     this.stompClient.connect({}, () => {
-      that.stompClient.subscribe('/streaming/topic/simple-message', (message) => {
+      that.stompClient.subscribe('/topic/simple-message', (message) => {
         console.log(message);
         if (message.body) {
           console.log(message.body);
