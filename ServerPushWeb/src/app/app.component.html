@@ -35,27 +35,21 @@
   </form>
 </div>
 
+<div class="bg-info col-md-4" style=" text-align: center; ">
+  <h2>Wiadomości</h2>
+<div class="bg-info"
+     style=" text-align: center; overflow: scroll; height: 600px;" #scrollMe [scrollTop]="scrollMe.scrollHeight">
 
-<div class="bg-info col-md-4" id="messageBox" style="text-align: center; overflow-y: scroll; height:auto; max-height:90vh;">
-  <h2>
-    Wiadomości
-  </h2>
-  <div *ngFor="let msg of simpleMessages" class="bg-primary rounded" style="margin: 10px;">
+  <div *ngFor="let msg of simpleMessages" class="bg-primary rounded" style="margin: 10px;"
+       >
     <span><b>Data wysłania </b>{{msg.date  | date:'dd/MM/yy HH:mm'}}</span><br>
     <span><b>Nadawca </b>{{msg.sender}}</span><br>
     <span><b>Odbiorca </b> {{msg.receiver}}</span><br>
     <span><b>Treść </b> {{msg.text}}</span><br>
   </div>
-  <div style="height:200px;">DSADSA</div>
-  <div style="height:200px;">DSADSA</div>
-  <div style="height:200px;">DSADSA</div>
-  <div style="height:200px;">DSADSA</div>
-  <div style="height:200px;">DSADSA</div>
-  <div style="height:200px;">DSADSA</div>
-  </div>
+</div>
+</div>
 <br>
-
-
 
 <!--<div>-->
   <!--Messages-->
