@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
 
   constructor(public appService: AppService) {
-    this.readHistory();
+    //this.readHistory();
     this.initializeSimpleMessageStreaming();
 
   }
@@ -50,7 +50,9 @@ export class AppComponent implements OnInit {
     this.stompClient = Stomp.over(webSocket);
     let that = this;
     this.stompClient.connect({}, () => {
-      that.stompClient.subscribe('/topic/simple-message', (message) => {
+      that.stompClient.subscribe('/history/simple-message', (message) => {
+        console.log('chuj');
+        console.log(message.body);
         if (message.body) {
           this.simpleMessages.push(JSON.parse(message.body));
         }
