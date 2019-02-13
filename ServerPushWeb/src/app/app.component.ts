@@ -67,6 +67,18 @@ export class AppComponent implements OnInit {
 
   }
 
+  isTextValid(){
+    if (undefined !== this.simpleMessage.text &&
+      undefined !== this.simpleMessage.sender &&
+      undefined !== this.simpleMessage.receiver &&
+      this.simpleMessage.sender.length && this.simpleMessage.receiver &&
+      this.simpleMessage.text.length){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
 
 }
-
